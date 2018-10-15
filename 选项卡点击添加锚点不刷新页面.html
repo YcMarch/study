@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>选项卡点击添加锚点不刷新页面</title>
+</head>
+
+<style>
+.tab .tab-option {height: 100%;color: #000000;display: inline-block;font-size: 20px;text-align: center;font-weight: bold;cursor: pointer;}
+.selected {box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);}
+.tab-content {width: 1000px;height: 610px;color: #808080;font-size: 14px;overflow-y: auto;display: none;}
+.tab-content.show {display: block;}
+</style>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<body>
+  <div class="tab">
+						<li style="width: 324px;" class="tab1 tab-option selected"  data-tab-id="0">杨春工作室</li>
+						<li style="width: 370px;" class="tab2  tab-option"  data-tab-id="1">婚庆合伙人</li>
+						<li style="width: 292px;" class="tab3  tab-option"  data-tab-id="2">前端大全网</li>
+	</div>
+  <div class="tab-content show"   data-tab-id="0">
+			<a href="http://www.yc-wr.com">杨春工作室</a>
+	</div>
+	<div class="tab-content"   data-tab-id="1">
+		  <a href="http://www.hqhh.wang">婚庆合伙人</a>
+	</div>
+	<div class="tab-content"   data-tab-id="2">
+		  <a href="http://www.3wweb.cn">前端大全网</a>
+	</div>
+
+  <script type="text/javascript">
+  			$(function() {   //  函数自执行
+  				var defaultTabId = "";  //  声明一个空的 id值
+  				$(".tab").on("click", ".tab-option", function() {  //   on 点击方法，点击 tab 下面的 tab-option  执行
+  					dataTabId = $(this).attr("data-tab-id"); //  将当前的 元素上的自定义属性的值  赋值给   dataTabId
+  					$(".tab").find(".tab-option").removeClass("selected"); // tab 下面  所有的 .tab-option  移除  selected 这个样式
+  					$(this).addClass("selected");  //  当前的添加上  selected  这个样式
+  					$('.tab-content').removeClass("show"); //   所有的tab-content  移除 show 属性
+  					$('.tab-content[data-tab-id=' + dataTabId + ']').addClass("show");  //  当前自定义属性上的是几，就是第几个模块添加，show 属性
+  					history.replaceState({selectedTab: dataTabId}, "", "#tab=" + dataTabId);  //replaceState修改history的状态值，不创建新的历史记录,获取当前的地址添加上 #tab= 点击的id
+  				});
+  				if(location.hash) { // 打开浏览器的时候监测当前链接是否有 hash值   #tab=0
+            console.log(location.hash.substr(1)); //  将hash 值 # 截取掉
+            console.log(location.hash.substr(1).split("=")); // 用 =  将他们分隔开 成为数组
+  					defaultTabId = location.hash.substr(1).split("=")[1];  // 选择数组中的 1项 （ 也就是第二个） 赋值给 defaultTabId
+
+  					$(".tab").find(".tab-option").removeClass("selected"); // 找到tab 下面所有 .tab-option  清除样式
+  					$('.tab-option[data-tab-id=' + defaultTabId + ']').addClass("selected"); // 给 对应id 的 添加上样式
+  					$('.tab-content').removeClass("show"); // 移除显示的 所有的  show
+  					$('.tab-content[data-tab-id=' + defaultTabId + ']').addClass("show"); // 对应的 id  添加上  show
+  				}else {
+            console.log('没有');
+          }
+  			});
+  	</script>
+
+</body>
+</html>
