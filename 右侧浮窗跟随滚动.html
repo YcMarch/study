@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>右侧浮窗跟随滚动</title>
+	<style>
+      body{position: relative;height: 2000px;}
+      #zixun{width: 100px;height: 100px;background: red;position: absolute;top: 30%;right: 0;}
+	</style>
+</head>
+<body>
+
+  <div id="zixun"></div>
+
+  <script>
+	    window.onscroll=function(){
+	        var oDiv=document.getElementById('zixun');
+	        var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+	        startMove(parseInt((document.documentElement.clientHeight-oDiv.offsetHeight)/2+scrollTop))
+	    }
+	    var timer=null;
+
+	    function startMove(iTarget){
+	        var oDiv=document.getElementById('zixun');
+	        clearInterval(timer);
+	        timer=setInterval(function(){
+	            var speed=(iTarget-oDiv.offsetTop)/6;
+	            speed=speed>0?Math.ceil(speed):Math.floor(speed);
+	            if(oDiv.offsetTop==iTarget){
+	                clearInterval(timer);
+	            }
+	            else{
+	                oDiv.style.top=oDiv.offsetTop+speed+'px'
+	            }
+	        },19)
+	    }
+	</script>
+
+</body>
+</html>
