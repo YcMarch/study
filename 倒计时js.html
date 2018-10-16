@@ -18,9 +18,9 @@
   <script type="text/javascript">
 
     //设置开始时间
-    var begDate = new Date("2018-10-12 13:52:00");
+    var begDate = new Date("2018-10-12 16:09:00");
     //设置结束时间
-    var endDate = new Date("2018-10-12 13:53:00");
+    var endDate = new Date("2018-10-12 16:10:00");
     var end = endDate.getTime(); // 结束秒数
     var beg = begDate.getTime(); // 开始秒数
 
@@ -61,10 +61,6 @@
 
       } else {  // 结束的时候执行这里
         timeTit.innerHTML = '活动已经结束';
-        document.getElementById("_d").innerHTML = 0 + "天";
-        document.getElementById("_h").innerHTML = 0 + "时";
-        document.getElementById("_m").innerHTML = 0 + "分";
-        document.getElementById("_s").innerHTML = 0 + "秒";
         clearTimeout(countTime); //  结束的时候清除定时器
         return;  // 并停止这个函数
       }
