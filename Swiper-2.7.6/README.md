@@ -1,3 +1,11 @@
+
+
+个人整理
+
+兼容性
+
+
+
 [![Stories in Ready](https://badge.waffle.io/nolimits4web/swiper.png?label=ready&title=Ready)](https://waffle.io/nolimits4web/swiper)
 # Swiper - Mobile touch slider with hardware accelerated transitions
 
