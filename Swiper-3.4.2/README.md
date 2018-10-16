@@ -1,6 +1,6 @@
 个人备注：
 
-兼容性：
+兼容性：ie10 以上，亲测 ie9 已经不兼容；
 
 
 [![Join the chat at https://gitter.im/nolimits4web/Swiper](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nolimits4web/Swiper)
