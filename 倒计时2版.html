@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+
+  <div class="xsXlLBDjs" endtime = '2018/11/12 16:48:30'
+  hrefthis = 'http://www.yc-wr.com'>
+  <p>11月9日<b style="font-size: 25px;">11</b>时<b style="font-size: 25px;">11</b>分开始</p>
+ </div>
+
+ <script>
+                        // 倒计时函数
+                        function djsEndtime(){
+                            $(".xsXlLBDjs").each(function(){
+                                var endtime = new Date($(this).attr("endtime")).getTime();  // 结束时间
+                                var hrefthis = $(this).attr("hrefthis") // 当前链接
+                                var starTime = endtime + 3600000;  //  活动开始时间
+                                var nowtime = new Date().getTime(); //  现在时间
+                                var youtime = endtime-nowtime;  //  活动结束 -  当前时间  （剩余的时间）
+                                var seconds = youtime/1000;   // 秒
+                                var minutes = Math.floor(seconds/60);  // 分钟
+                                var hours = Math.floor(minutes/60);  // 小时
+                                var days = Math.floor(hours/24); //  天数
+                                var CDay= days<10?'0' + days:days ;
+                                var CHour= (hours % 24)<10?'0'+(hours % 24):(hours % 24);
+                                var CMinute= (minutes % 60)<10?'0'+ (minutes % 60):(minutes % 60);
+                                var CSecond= (Math.floor(seconds%60))<10? '0'+(Math.floor(seconds%60)) :(Math.floor(seconds%60));
+                                var Ms =  Math.floor(youtime%1000/10)<10?'0'+ Math.floor(youtime%1000/10):Math.floor(youtime%1000/10);
+
+                                if(youtime>3600000){
+                                    //$(this).children('p').html('11月9日<b style="font-size: 25px;">15</b>时<b style="font-size: 25px;">11</b>分开始')
+                                }else if(youtime>0){
+                                    $(this).children('p').html('<a href="'+ hrefthis +'" target="_blank" style="color: #fff;"> 狂欢进行时：<span style="background: #fff;color: #ff3738;border-radius: 3px;">'+ CMinute +'</span>分<span style="background: #fff;color: #ff3738;border-radius: 3px;">'+ CSecond +'</span>秒'+ '<span id="msID" style="color: #ff3738">'+ Ms +'</span>'+'</a>');
+                                } else{
+                                    $(this).children('p').html('购课结束');
+                                    $(this).css('background','#b1b1b1')
+                                }
+                            });
+                            setTimeout("djsEndtime()",75);
+                        };
+                        djsEndtime();
+
+                    </script>
+
+</body>
+</html>

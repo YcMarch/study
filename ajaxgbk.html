@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="gb2312">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+
+
+  <div class="ajaxBox">
+        <div>姓名
+          <input type="text" name="info[name]" id="name" size="50" value="">
+        </div>
+        <div>电话
+          <input type="text" name="info[tel]" id="tel" size="50" value="">
+        </div>
+          <input type="hidden" name="info[from]" id="from" size="50" value="测试来源">
+        <div>
+            <input type="button" name="" value="提交" id="dosubmit">
+        </div>
+  </div>
+
+  <script>
+    $('#dosubmit').click(function() {
+
+  				var info = {};
+  				info.name = $('#name').val()
+  				info.tel = $('#tel').val()
+          info.from = $('#from').val()+window.location.search
+
+  				//info.city = $('#city').val()
+          if(info.name == '') { //验证手机号是否为空
+            alert('请填写姓名');
+            return false;
+          }
+  				if(info.tel == '') { //验证手机号是否为空
+  					alert('请填写手机号');
+  					return false;
+  				}
+  				var reg = /^0?1[3456789]\d{9}$/; //手机号正则
+  				if(!reg.test(info.tel)) { //验证手机号是否正确
+  					alert('请填写正确的手机号！');
+  					return false;
+  				}
+
+  				$.ajax({
+  					url: "http://hlj.kaoyan365.cn/index.php?m=formguide&c=forms&a=show&formid=48&action=jsonp&siteid=1",
+  					data: {info},
+  					dataType: "jsonp",
+  					type: "GET",
+  					success: function(json) {
+  						if(json.status == 1) {
+                  alert('提交成功')
+  						}
+  					}
+  				})
+  			});
+	</script>
+</body>
+</html>

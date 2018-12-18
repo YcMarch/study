@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="gb2312">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>短信验证码</title>
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+姓名 <input type="text" name="info[name]" id="name" size="50" value="" class="input-text"><br />
+手机号 <input type="text" name="info[tel]" id="tel" size="50" value="" class="input-text"><br />
+<a class="hqyzm " id="getyzm" href="javascript:;">获取验证码</a> <span id="daojishi" class="hqyzm " style="display: none;">&nbsp;</span>
+  验证码<input type="text" name="info[yzm]" id="yzm" size="50" value="" class="input-text">
+  <input type="button" name="" value="提交"id="submit">
+
+
+
+  <script type="text/javascript">
+
+    $('#submit').click(function(){
+  				var info = {};
+  				info.name=$('#name').val()
+  				info.tel=$('#tel').val()
+  				info.yzm=$('#yzm').val()
+          if(info.name == '') { //验证手机号是否为空
+  					alert('请填写姓名');
+  					return false;
+  				}
+  				if(info.tel == '') { //验证手机号是否为空
+  					alert('请填写手机号');
+  					return false;
+  				}
+  				var reg = /^0?1[34578]\d{9}$/; //手机号正则
+  				if(!reg.test(info.tel)) { //验证手机号是否正确
+  					alert('请填写正确的手机号！');
+  					return false;
+  				}
+          if(info.yzm == '') { //验证手机号是否为空
+  					alert('请填写验证码');
+  					return false;
+  				}
+  				$.ajax({
+  					url:"http://www.kaoyan365.cn/index.php?m=formguide&c=forms&a=show&formid=63&action=jsonp&siteid=1&verify=true",
+  					data: {info},
+  					dataType:"jsonp",
+  					type:"GET",
+  					success:function(json){
+  						if(json.status==1){
+  							$('.mask').show()
+  							$('.tc').show();
+  							$('#getyzm').css('display','inline-block')
+  							$('#daojishi').css('display','none')
+  						} else if(json.status == -2) {
+							alert("验证码错误")
+						}else if(json.status==-1){
+  							alert("请勿重复提交")
+  						}
+  					}
+  				})
+  			});
+
+        //获取验证码
+$("#getyzm").click(function(event) {
+				var phone = $("#tel").val();
+					$.ajax({
+						url: 'http://www.kaoyan365.cn/index.php?m=formguide&c=forms&a=send_sms&formid=63&siteid=1',
+						type: 'GET',
+						dataType: 'jsonp',
+						data: {phone: phone},
+						success: function(json) {
+							if (json.status == 1) {
+								$('#daojishi').css('display','inline-block')
+								$('#getyzm').css('display','none')
+								runcount(60)
+								alert('发送成功')
+							} else {
+								alert(json.msg);
+							}
+						}
+					})
+				})
+
+        //倒计时函数
+			function runcount(t) {
+				document.getElementById('daojishi').innerHTML = t + 'S';
+					t--;
+					setTimeout(function() {
+						runcount(t)
+					}, 1000)
+				$('#getyzm').hide()
+			}
+
+  </script>
+
+</body>
+</html>
