@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gb2312">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>天数倒计时</title>
+</head>
+<body>
+
+
+        <div class="zg_list_left01_sj clearfix" style="margin-top:5px">
+                <div class="zg_list_sj_left">
+                <p class="ky_time" id="timer"></p>
+                </div>
+                <script>
+                        var oT=document.getElementById('timer');
+                        var oDate=new Date();
+                        oDate.setFullYear(2018,11,22);
+                        oDate.setHours(24,0,0,0);
+                        var future=oDate.getTime();
+                        clock();
+                        function clock(){
+                            var oDate=new Date();
+                            var now=oDate.getTime();
+                            var s=parseInt((future-now)/1000);
+                            var d=parseInt(s/86400);
+                            var bai=parseInt(d/100);
+                            var shi=parseInt(d%100/10);
+                            var tge=d%100;
+                            var ge=tge%10;
+                            oT.innerHTML='距2019年研究生考试仅剩<span>'+bai+'</span><span>'+shi+'</span><span>'+ge+'</span>天';
+                        }
+                    </script></div>
+    
+</body>
+</html>

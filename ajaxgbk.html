@@ -11,17 +11,18 @@
 
 
   <div class="ajaxBox">
-        <div>ĞÕÃû
+        <div>å§“å
           <input type="text" name="info[name]" id="name" size="50" value="">
         </div>
-        <div>µç»°
+        <div>ç”µè¯
           <input type="text" name="info[tel]" id="tel" size="50" value="">
         </div>
-          <input type="hidden" name="info[from]" id="from" size="50" value="²âÊÔÀ´Ô´">
+          <input type="hidden" name="info[from]" id="from" size="50" value="æµ‹è¯•æ¥æº">
         <div>
-            <input type="button" name="" value="Ìá½»" id="dosubmit">
+            <input type="button" name="" value="æäº¤" id="dosubmit">
         </div>
   </div>
+
 
   <script>
     $('#dosubmit').click(function() {
@@ -32,19 +33,22 @@
           info.from = $('#from').val()+window.location.search
 
   				//info.city = $('#city').val()
-          if(info.name == '') { //ÑéÖ¤ÊÖ»úºÅÊÇ·ñÎª¿Õ
-            alert('ÇëÌîĞ´ĞÕÃû');
+          if(info.name == '') { //éªŒè¯æ‰‹æœºå·æ˜¯å¦ä¸ºç©º
+            alert('è¯·å¡«å†™å§“å');
             return false;
           }
-  				if(info.tel == '') { //ÑéÖ¤ÊÖ»úºÅÊÇ·ñÎª¿Õ
-  					alert('ÇëÌîĞ´ÊÖ»úºÅ');
+  				if(info.tel == '') { //éªŒè¯æ‰‹æœºå·æ˜¯å¦ä¸ºç©º
+  					alert('è¯·å¡«å†™æ‰‹æœºå·');
   					return false;
   				}
-  				var reg = /^0?1[3456789]\d{9}$/; //ÊÖ»úºÅÕıÔò
-  				if(!reg.test(info.tel)) { //ÑéÖ¤ÊÖ»úºÅÊÇ·ñÕıÈ·
-  					alert('ÇëÌîĞ´ÕıÈ·µÄÊÖ»úºÅ£¡');
+  				var reg = /^0?1[3456789]\d{9}$/; //æ‰‹æœºå·æ­£åˆ™
+  				if(!reg.test(info.tel)) { //éªŒè¯æ‰‹æœºå·æ˜¯å¦æ­£ç¡®
+  					alert('è¯·å¡«å†™æ­£ç¡®çš„æ‰‹æœºå·ï¼');
   					return false;
   				}
+
+
+
 
   				$.ajax({
   					url: "http://hlj.kaoyan365.cn/index.php?m=formguide&c=forms&a=show&formid=48&action=jsonp&siteid=1",
@@ -53,7 +57,7 @@
   					type: "GET",
   					success: function(json) {
   						if(json.status == 1) {
-                  alert('Ìá½»³É¹¦')
+                  alert('æäº¤æˆåŠŸ')
   						}
   					}
   				})
