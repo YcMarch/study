@@ -1,0 +1,16 @@
+.ceshi {
+  color: red;
+}
+.ceshi p {
+  border-bottom: 1px #ddd solid;
+}
+.ceshi p span {
+  color: #007aff;
+  font-size: 50px;
+}
+.ceshi p em {
+  color: blue;
+  border: 1px #ddd solid;
+  border-radius: 5px;
+    display: flex;
+}

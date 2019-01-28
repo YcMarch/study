@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>attr方法尝试</title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+</head>
+
+<body>
+
+	<p id="ceshi">测试attr方法</p>
+	<p id="ceshi2" data-ceshi='ceshi1'>产看当前属性值</p>
+	<p id="ceshi3" data-ceshi='ceshi1' title="测试下这个"> 测试attr方法2</p>
+
+	<script>
+
+		$('#ceshi').click(function(){
+
+			$(this).attr('data-name','ceshi');
+
+		})
+
+		$('#ceshi2').click(function(){
+
+			//  查看当前
+			console.log($(this).attr('data-ceshi'))
+
+		})
+		$('#ceshi3').click(function(){
+
+			$(this).attr('data-title',function(){return this.title})
+
+		})
+
+	</script>
+
+</body>
+</html>
