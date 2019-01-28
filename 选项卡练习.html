@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>选项卡练习</title>
+  <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+  <style type="text/css">
+     .xxkC-1{width:100px;height:100px;border:1px red solid;display:none;}
+     .xxk li{display:inline-block;}
+     .xxk li.cur{color:red;}
+  </style>
+</head>
+<body>
+
+
+
+  <ul class="xxk">
+    <li class="cur">111</li>
+    <li>222</li>
+    <li>333</li>
+  </ul>
+
+  <div class="xxkCon">
+          <div class="xxkC-1" style="display:block;">
+          1111
+          </div>
+          <div class="xxkC-1">
+          222
+          </div>
+          <div class="xxkC-1">
+          333
+          </div>
+  </div>
+
+  <script type="text/javascript">
+
+    $('.xxk li').each(function(index){
+      $(this).click(function(){
+        $('.xxk li').removeClass('cur').eq(index).addClass('cur');
+        $('.xxkC-1').hide().eq(index).show();
+      })
+    })
+    
+  </script>
+
+
+</body>
+</html>
