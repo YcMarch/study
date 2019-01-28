@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+    
+    <p class="djs" endtime="2019/1/29 00:00:00">
+        <span class="d"></span>天
+        <span class="h"></span>时
+        <span class="m"></span>分
+        <span class="s"></span>秒
+        <span class="ms"></span>毫秒
+
+    </p>
+
+    <script>
+        // 倒计时函数
+        function djsEndtime(){
+                    $(".djs").each(function(){
+                    var endtime = new Date($(this).attr("endtime")).getTime();
+                    var nowtime = new Date().getTime();
+                    var youtime = endtime-nowtime;
+                    var seconds = youtime/1000;
+                    var ms = Math.floor(youtime%1000/10);
+                    var cdms = ms<10? '0'+ms :ms;
+                    var minutes = Math.floor(seconds/60);
+                    var hours = Math.floor(minutes/60);
+                    var days = Math.floor(hours/24);
+                    var CDay= days ;
+                    var CHour= hours % 24;
+                    var CMinute= minutes % 60;
+                    var CSecond= Math.floor(seconds%60);
+                    
+                        if(endtime<=nowtime){
+                            $(this).children('.d').html("0");
+                            $(this).children('.h').html("0");
+                            $(this).children('.m').html("0");
+                            $(this).children('.s').html("0");
+                        }else{
+                            $(this).children('.d').html(CDay);
+                            $(this).children('.h').html(CHour);
+                            $(this).children('.m').html(CMinute);
+                            $(this).children('.s').html(CSecond);
+                            $(this).children('.ms').html(cdms);
+                        }
+                    });
+                    setTimeout("djsEndtime()",80);
+                };
+                djsEndtime();
+    </script>
+</body>
+</html>
