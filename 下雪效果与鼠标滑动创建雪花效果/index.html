@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>下雪</title>
+    <meta name="keywords" content="下雪" />
+    <meta name="description" content="下雪" />
+    <link rel="stylesheet" href="http://www.kaoyan365.cn/statics/css/animate.min.css">
+    <link rel="stylesheet" href="css/css.css">
+    <script src="http://www.kaoyan365.cn/statics/js/jquery.min.js"></script>
+    <script src="http://www.kaoyan365.cn/statics/js/wow.min.js"></script>
+    <script type="text/javascript">
+        new WOW().init()
+    </script>
+
+</head>
+<body>
+
+<div class="ceshi"></div>
+
+<div id="flame"></div>   <!--  需要的div -->
+
+<script>
+
+    // 雪花
+    var windowH = $(window).height() //获取视口高度
+    function Obj(){}  //创建一个对象
+    Obj.prototype.draw=function(o){
+        var oTop = $(document).scrollTop() //获取滚动条高度
+        var speed=oTop;   //雪花每次下落的数值
+        var startPosLeft=Math.ceil(Math.random()*document.documentElement.clientWidth)-30;//设置雪花随机的开始x值的大小
+        o.style.opacity=Math.random();  //设置透明度
+        o.style.left=startPosLeft+'px';
+        o.style.color="#fff";
+        o.style.fontSize=18+Math.ceil(Math.random()*14)+'px';
+        setInterval(function(){
+            if(speed<windowH+oTop){
+                o.style.top=speed+'px';
+                speed+=2;
+            }
+            else{
+                $(o).remove();
+            }
+        },30);
+    }
+    window.onload=function () {
+        var flame = document.getElementById('flame');
+        /*使用setInterval定时器每800毫秒创建一个雪花*/
+        setInterval(function () {
+            if (flame.children.length < 96) {
+                var odiv = document.createElement('div');
+                odiv.innerHTML = "✽";/* ✽ */
+                odiv.style.position = 'absolute';
+                odiv.style.top = 0;
+                flame.appendChild(odiv);
+                var obj = new Obj();   //创建函数
+                obj.draw(odiv);  //执行obj的draw方法
+            }
+        }, 150);
+    }
+
+</script>
+<script type="text/javascript" src="js/mymouse.js"  id="mymouse"></script>
+
+</body>
+</html>

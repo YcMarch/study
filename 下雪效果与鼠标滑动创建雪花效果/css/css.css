@@ -1,0 +1,17 @@
+/* CSS Document Edited by  YoungC   9-27 */
+* {margin:0;padding:0;outline:none;list-style:none;text-decoration:none;blr:expression(this.onFocus=this.blur()); box-sizing: border-box;}
+body,html {color:#333;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;background: none;font-family:arial, "�?�?雅黑", Microsoft YaHei;position: relative;font-size: 14px;}
+body{overflow-x: hidden;}
+img {border:none;width: auto\9;-ms-interpolation-mode: bicubic;_width:auto; vertical-align: top; }
+input, textarea ,select{border:none;background:none;cursor:pointer;font-size:14px;vertical-align:middle;color:#333; font-family:arial, "�?�?雅黑", Microsoft YaHei;  }
+select {border:inherit;background: inherit; }
+em, i {font-style:normal;  }
+a{color: #000;text-decoration: none;}
+a:focus, input, select {outline:none;  }
+.clearfix {*zoom:1; clear: both; }
+.clearfix:after {content:"\200B"; display: block;clear: both;height: 0;  }
+.inner{width: 1000px;margin: 0 auto;}
+
+
+.ceshi{height: 1000px;background: darkred;}
+

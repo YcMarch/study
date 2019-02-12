@@ -12,5 +12,25 @@
   color: blue;
   border: 1px #ddd solid;
   border-radius: 5px;
-    display: flex;
+}
+.ceshi2 {
+  width: 100px;
+  height: 100px;
+  border: 1px #000d4d solid;
+}
+.ceshi2 .p1 {
+  font-size: 36px;
+  float: left;
+  color: #007aff;
+}
+.ceshi2 .p2 {
+  font-size: 20px;
+  float: left;
+  color: #f938ab;
+}
+.ceshi2 .p3 {
+  font-size: 50px;
+}
+.ceshi2 .p4 {
+  font-size: 40px;
 }
