@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dom</title>
+</head>
+<body>
+
+    <ul id="list">
+        <li data-num=1 id="dyh">第一行</li>
+        <li>第二行</li>
+        <li>第三行</li>
+        <li>第四行</li>
+        <li>第五行</li>
+        <li>第六行</li>
+        <li>第七行</li>
+    </ul>
+
+    <button id="del">移除</button>
+
+    <script>
+    
+        //  获取元素
+        let list = document.getElementById('list');
+
+        console.log(list)
+
+        //  创建元素
+
+        let liNewAdd = document.createElement('li');
+
+        console.log(liNewAdd)
+
+        //创建内容
+
+        let liNewAddCon = document.createTextNode('这是新插入进去的内容')
+
+        console.log(liNewAddCon)
+
+        //  插入子节点
+
+        // 1、插入内容
+        let con = liNewAdd.appendChild(liNewAddCon);
+        console.log(con)
+        // 2、插入元素
+        list.appendChild(liNewAdd);
+
+        //  新节点插入谁之前
+
+        let liOne = document.getElementsByTagName('li')[0];
+        console.log(liOne)
+        let liNewAddOne = document.createElement('li');
+        let liNewAddConOne = document.createTextNode('这是要插入到第一条的内容')
+        liNewAddOne.appendChild(liNewAddConOne)
+        // 将新创建的元素插入到第一条的前面
+        list.insertBefore(liNewAddOne,liOne)
+
+        // 移除节点
+
+        let del = document.querySelector('#del');
+
+        del.onclick = function(){
+
+            list.removeChild(liOne);
+
+        }
+
+        // 替换节点
+
+        let liThree = list.getElementsByTagName('li')[2];
+        let liFour = list.getElementsByTagName('li')[3];
+        console.log(liThree)
+        console.log(liFour)
+
+        let replaceChildAdd = document.createElement('li');
+        let replaceChildAddText = document.createTextNode('我是新加进来的');
+        replaceChildAdd.appendChild(replaceChildAddText);
+        console.log(replaceChildAdd)
+
+        list.replaceChild(replaceChildAdd,liFour)
+
+
+        // 获取属性值、设置属性值
+
+        let dyh = document.getElementById('dyh')
+
+        console.log(dyh.getAttribute('data-num'))
+
+        dyh.setAttribute('data-num','2')
+
+        
+        // innerHTML  
+
+        // 获取
+        let innerHTMLText = list.getElementsByTagName('li')[3].innerHTML
+
+        console.log(innerHTMLText)
+
+        // 设置
+
+        let innerHTMLText2 = list.getElementsByTagName('li')[2]
+        innerHTMLText2.innerHTML = '这里被我改掉了'
+
+        // style  属性
+
+        //  设置
+
+        let innerHTMLText4 = list.getElementsByTagName('li')[4];
+
+        innerHTMLText4.style.backgroundColor = '#787878';
+
+        // 获取
+
+        console.log(innerHTMLText4.style)
+        console.log(innerHTMLText4.style.backgroundColor)
+
+        // parentNode
+
+        // 获取父级节点
+
+        console.log(liThree.parentNode)
+
+        liThree.parentNode.setAttribute('data-num','3')
+
+        // 子节点
+
+        console.log(list.childNodes[0].nodeType)
+
+        // 属性节点
+
+        console.log(list.attributes)
+
+    </script>
+    
+</body>
+</html>
