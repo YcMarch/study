@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符串的方法</title>
+</head>
+<body>
+
+    <!-------------------------- charAt()   begin  ---------------------------->
+
+    <p id="str1">我是字符串一</p>
+
+    <script>
+    
+        //charAt()：返回指定索引位置的字符
+        // 使用方法： str.charAt(index)
+        //解释：根据下标来找到需要的字符
+
+        let str = document.getElementById('str1').innerHTML;
+
+        console.log('1、charAt():'+str.charAt(3));  //符
+        
+    </script>
+
+    <!--------------------------- charAt()   END    ------------------------------>
+
+
+    <!---------------------------- charCodeAt()   begin -------------------------->
+
+    <p id="str2">我是字符串二</p>
+
+    <script>
+    
+        //charCodeAt()：返回指定索引位置字符的 Unicode 值
+        //使用方法：str.charCodeAt(0)
+        //解释：返回指定索引位置字符的 Unicode 值
+
+        let str2 = document.getElementById('str2').innerHTML;
+        console.log('2、charCodeAt()：'+ str2.charCodeAt(1))  // 26159
+    
+    </script>
+
+    <!-------------------------- charCodeAt()   end   ----------------------------->
+
+    <!-------------------------- concat()  begin  ---------------------------------->
+
+    <p id="str3">我是字符串三</p>
+    <p id="str4">我是字符串四</p>
+
+    <script>
+    
+        //concat()：连接两个或多个字符串，返回连接后的字符串
+        //使用方法：str1.concat(str2);
+        //解释：将第一个字符串与第二个字符串连接成一个字符串
+
+        let str3 = document.getElementById('str3').innerHTML;
+        let str4 = document.getElementById('str4').innerHTML;
+        console.log('3、concat()：'+ str3.concat(str4))  //  我是字符串三我是字符串四
+    
+    </script>
+
+    <!------------------------ concat()  end    ------------------------------------->
+
+    <!-------------------------- indexOf()  begin  ---------------------------------->
+
+    <script>
+
+    //indexOf()：indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置
+    //使用方法：stringObject.indexOf(searchvalue,fromindex);searchvalue	必需。规定需检索的字符串值。
+    //                                                      fromindex	可选的整数参数。规定在字符串中开始检索的位置。它的合法取值是 0 到 stringObject.length - 1。如省略该参数，则将从字符串的首字符开始检索。
+    //解释：找到想要字符出现第一次位置的下标
+    
+    let str5 = '我是字符串五我是字符串五';
+
+    console.log('4、indexOf()：'+ str5.indexOf('串'))     // 4
+    console.log('4、indexOf()：'+ str5.indexOf('串',5))   // 10
+    
+
+    </script>
+
+    <!-------------------------- indexOf()  end   ---------------------------------->
+
+    <!-------------------------- lastIndexOf()  begin  ---------------------------------->
+
+    <script>
+
+            //lastIndexOf()：查找字符串 "xxx" 最后出现的位置
+            //使用方法：str.lastIndexOf("xxxx")
+            //解释：在字符串中这个字符串最后出现的下标
+            
+            let str6 = '我是字符串六我是字符串六';
+        
+            console.log('5、lastIndexOf()：'+ str6.lastIndexOf('串'))  //  10
+            
+    </script>
+
+    <!-------------------------- lastIndexOf()  end    ---------------------------------->
+
+    <!-------------------------- slice()  begin  ---------------------------------->
+
+    <script>
+
+            //slice()：提取字符串的片断，并在新的字符串中返回被提取的部分
+            //使用方法：arrayObject.slice(start,end)   start	要抽取的片断的起始下标。如果是负数，则该参数规定的是从字符串的尾部开始算起的位置。也就是说，-1 指字符串的最后一个字符，-2 指倒数第二个字符，以此类推。
+            //                                        end	紧接着要抽取的片段的结尾的下标。若未指定此参数，则要提取的子串包括 start 到原字符串结尾的字符串。如果该参数是负数，那么它规定的是从字符串的尾部开始算起的位置。
+            //解释：截取字符串
+            
+            let str7 = '我是字符串七我是字符串七';
+        
+            console.log('6、slice()：'+ str7.slice(2,4))  //  字符
+            
+    </script>
+
+    <!-------------------------- slice()  end    ---------------------------------->
+
+    <!-------------------------- split()  begin  ---------------------------------->
+
+    <script>
+
+            //split()：把字符串分割为子字符串数组
+            //使用方法：stringObject.split(separator,howmany)   separator	必需。字符串或正则表达式，从该参数指定的地方分割 stringObject。
+            //                                                 howmany	可选。该参数可指定返回的数组的最大长度。如果设置了该参数，返回的子串不会多于这个参数指定的数组。如果没有设置该参数，整个字符串都会被分割，不考虑它的长度。
+            //解释：用字符串将字符串切割为数组
+            
+            let str8 = '我是字符串八我是字符串八';
+        
+            console.log('7、split()：'+ str8.split('串'),str8.split('串'))  // 
+            
+    </script>
+
+    <!-------------------------- split()  end    ---------------------------------->
+
+    
+    
+</body>
+</html>
