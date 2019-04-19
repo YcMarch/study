@@ -16,8 +16,9 @@
 
   <script>
 	    window.onscroll=function(){
-	        var oDiv=document.getElementById('zixun');
-	        var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+	        var oDiv=document.getElementById('zixun');   // 获取元素
+	        var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;   //  滚动条位置  或者   网页被卷去的高
+			console.log(scrollTop)
 	        startMove(parseInt((document.documentElement.clientHeight-oDiv.offsetHeight)/2+scrollTop))
 	    }
 	    var timer=null;

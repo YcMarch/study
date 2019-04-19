@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .ceshi {
   color: red;
 }
@@ -34,3 +35,4 @@
 .ceshi2 .p4 {
   font-size: 40px;
 }
+.ceshi3{color: red;}
