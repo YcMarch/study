@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>通过手机号获取姓名</title>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+
+    <input type="text" id="phone" placeholder="请输入手机号">
+    <input type="button" id="Btn" value="获取姓名">
+    <input type="text" id="name">
+
+    <script>
+
+
+        get
+
+        $('#Btn').click(function(){
+
+            
+            let phoneValue = $('#phone').val();
+            console.log(phoneValue)
+            $.ajax({
+                url:'http://www.kaoyan365.cn/index.php?m=formguide&c=forms&a=getInfo&phone='+phoneValue+'',
+                method:'get',
+                dataType:'json',
+                success:function (data) {
+                    if(window.localStorage){
+                            localStorage.setItem('data',JSON.stringify(data));
+                    }else {
+                        console.log('不支持localStorage')
+                    }
+                    let name = document.getElementById('name');
+                    name.value = data.rel_name
+                    console.log(data.rel_name)
+                    //let name = document.querySelector('#name')
+                },
+                error:function () {
+                    console.log('失败')
+                }
+            })
+        })
+
+
+        // post
+        
+//         $('#Btn').click(function(){
+
+            
+// let phoneValue = $('#phone').val();
+// console.log(phoneValue)
+// $.ajax({
+//     url:'http://www.kaoyan365.cn/index.php?m=formguide&c=forms&a=getInfo',
+//     method:'post',
+//     dataType:'json',
+//     data:{phone:phoneValue},
+//     success:function (data) {
+//         if(window.localStorage){
+//                 localStorage.setItem('data',JSON.stringify(data));
+//         }else {
+//             console.log('不支持localStorage')
+//         }
+//         let name = document.getElementById('name');
+//         name.value = data.rel_name
+//         console.log(data.rel_name)
+//         //let name = document.querySelector('#name')
+//     },
+//     error:function () {
+//         console.log('失败')
+//     }
+// })
+// })
+    
+    
+    </script>
+    
+</body>
+</html>
