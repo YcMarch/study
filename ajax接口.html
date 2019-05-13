@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax接口</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+
+
+    <script>
+    $.ajax({
+                url:'http://www.kaoyan365.cn/index.php?m=formguide&c=forms&a=articleList',
+                method:'get',
+                dataType:'json',
+                success:function (data) {
+                    if(window.localStorage){
+                            localStorage.setItem('data',JSON.stringify(data));
+                    }else {
+                        console.log('不支持localStorage')
+                    }
+                    console.log(data)
+                },
+                error:function () {
+                    console.log('失败')
+                }
+            })
+    </script>
+
+<script>
+        $.ajax({
+                    url:'http://www.kaoyan365.cn/index.php?m=formguide&c=forms&a=addUser',
+                    method:'post',
+                    dataType:'json',
+                    data:{username:'1',phone:13811674735,title:'123',content:'ceshi'},
+                    success:function (data) {
+                        if(window.localStorage){
+                                localStorage.setItem('data',JSON.stringify(data));
+                        }else {
+                            console.log('不支持localStorage')
+                        }
+                        console.log(data.status)
+                    },
+                    error:function () {
+                        console.log('失败')
+                    }
+                })
+        </script>
+
+
+    
+</body>
+</html>

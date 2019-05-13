@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>If-else</title>
+</head>
+<body>
+
+    <!--=============== If   begin  ====================-->
+        <p>如果时间早于 20:00，会获得问候 "Good day"。</p>
+        <button id="btn1">点击这里</button>
+        <p id="demo1"></p>
+        <script>
+            let btn1 = document.querySelector('#btn1');
+            let demo1 = document.querySelector('#demo1');
+            btn1.onclick = function(){
+
+                let time1 = new Date().getHours(); // 获取现在的小时
+                if(time1<20){
+                    demo1.innerHTML = 'Good Day'
+                }
+
+            }
+        </script>
+    <!--=============== If   end    ======================-->
+
+    <!--============== if...else  begin  ==================-->
+    <p>如果时间早于 20:00，会获得问候 "Good day",或者“ Good evening ”</p>
+    <button id="btn2">点击这里</button>
+    <a href="#" id="demo2Link">随机链接</a>
+    <p id="demo2"></p>
+    <script>
+         let btn2 = document.querySelector('#btn2');
+         let demo2 = document.querySelector('#demo2');
+         let demo2Link = document.querySelector('#demo2Link')
+         let suiji = Math.random();
+
+         btn2.onclick = function(){
+
+            let time2 = new Date().getHours(); // 获取现在的小时
+            if(time2<20){
+                demo2.innerHTML = 'Good Day'
+            }else{
+                demo2.innerHTML = 'Good evening'
+            }
+         }
+
+         if(suiji<0.5){
+            demo2Link.innerHTML = '小于0.5'
+            demo2Link.href = 'http://www.yc-wr.com'
+         }else{
+            demo2Link.innerHTML = '大于0.5'
+            demo2Link.href = 'http://www.hqhh.wang'
+         }
+
+    </script>
+    <!--============== if...else  end    ===================-->
+
+    <!--============== switch  begin  ==================-->
+
+    <!-- 工作原理：首先设置表达式 n（通常是一个变量）。随后表达式的值会与结构中的每个 case 的值做比较。
+        如果存在匹配，则与该 case 关联的代码块会被执行。请使用 break 来阻止代码自动地向下一个 case 运行。 -->
+
+    <p>点击下面的按钮来显示今天是周几：</p>
+<button id="btn3">点击这里</button>
+<p id="demo3"></p>
+<script>
+
+let btn3 = document.querySelector('#btn3');
+let demo3 = document.querySelector('#demo3');
+
+let x;
+let time3 = new Date().getDay();
+
+switch(time3){
+    case 0:{
+        x='今天是周日';
+        break;
+    }
+    case 1:{
+        x='今天是周一';
+        break;
+    }
+    case 2:{
+        x='今天是周二';
+        break;
+    }
+    case 3:{
+        x='今天是周三';
+        break;
+    }
+    case 4:{
+        x='今天是周四';
+        break;
+    }
+    case 5:{
+        x='今天是周五';
+        break;
+    }
+    case 6:{
+        x='今天是周六';
+        break;
+    }
+}
+btn3.onclick = function(){
+    demo3.innerHTML = x;
+}
+</script>
+
+<!--============== switch  end ===================-->
+
+</body>
+</html>
