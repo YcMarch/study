@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>媒体查询测试</title>
+</head>
+<body>
+    <style>
+    
+    *{margin: 0;padding: 0;box-sizing: border-box;}
+
+    /*   字号尽量一只放在最上面  设计稿涉及到一个字号，就依次写一个字号  */
+    .fs22{font-size: 22px;}
+    .fs35{font-size: 35px;}
+    .fs45{font-size: 45px;}
+    .fs60{font-size: 60px;}
+    .banner{background: url(images/banner.jpg) no-repeat center;height: 740px;}
+    .mainB1{background: chocolate;}
+    .Tit{text-align: center;color: #000;padding: 30px 0;}
+    .mainB1Con{text-align: center;}
+    .mainB1Con p{line-height: 60px;border-bottom: 1px #000 solid;}
+
+
+    /*   媒体查询   begin  */
+    @media screen and (max-width:1441px){
+        
+     .fs22{font-size: 18px;}
+    .fs35{font-size: 30px;}
+    .fs45{font-size: 38px;}
+    .fs60{font-size: 40px;}
+    .banner{height: 500px;}
+    .Tit{padding: 20px;}
+    }
+
+    /*   媒体查询   end    */
+    
+    </style>
+
+    <div class="banner"></div>
+    
+    <!-- mainB1  begin  -->
+    <div class="mainB1">
+        <h3 class="Tit fs45">测试标题字号</h3>
+        <div class="mainB1Con">
+            <p class="fs22">测试</p>
+            <p>测试</p>
+            <p class="fs60">测试</p>
+            <p>测试</p>
+            <p>测试</p>
+            <p class="fs35">测试</p>
+           
+        </div>
+    </div>
+    <!-- mainB1  end    -->
+    <!--  footer  begin -->
+<iframe
+src="http://www.kaoyan365.cn/footer/"
+style="width: 100%;border: none;height: 218px;vertical-align:bottom;">
+</iframe>
+<!--  footer  end   -->
+    
+</body>
+</html>
