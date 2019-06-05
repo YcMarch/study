@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时间倒计时</title>
+</head>
+<body>
+    
+
+    <script>
+    
+    
+    var oT=document.getElementById('timer');var oDate=new Date();oDate.setFullYear(2019,11,21);oDate.setHours(24,0,0,0);var future=oDate.getTime();clock();function clock(){var oDate=new Date();var now=oDate.getTime();var s=parseInt((future-now)/1000);var d=parseInt(s/86400);var bai=parseInt(d/100);var shi=parseInt(d%100/10);var tge=d%100;var ge=tge%10;oT.innerHTML='距2020年考研倒计时<span>'+bai+'</span><span>'+shi+'</span><span>'+ge+'</span>天';}
+
+        
+    </script>
+
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx74b19bb11f212ea8&redirect_uri=http%3a%2f%2fwww.kaoyan365.cn%2f&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect
+
+
+</body>
+</html>

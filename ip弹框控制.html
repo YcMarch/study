@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ip弹框控制</title>
+</head>
+<body>
+
+    <div id='mask' style="display: none">mask</div>
+
+    <script>
+            　　window.onload=loadpopup();
+            　　function openwin(){
+
+                //  需要上线才可执行
+             
+            　　var mask = document.getElementById('mask')
+                mask.style.display = 'block'
+
+            　　}
+             
+            　　function get_cookie(Name) {
+             
+            　　var search = Name + "="
+             
+            　　var returnvalue = "";
+             
+            　　if (document.cookie.length > 0) {
+             
+            　　offset = document.cookie.indexOf(search)
+             
+            　　if (offset != -1) {
+             
+            　　offset += search.length
+             
+            　　end = document.cookie.indexOf(";", offset);
+             
+            　　if (end == -1)
+             
+            　　end = document.cookie.length;
+             
+            　　returnvalue=unescape(document.cookie.substring(offset, end))
+             
+            　　}
+             
+            　　}
+             
+            　　return returnvalue;
+             
+            　　} 　
+             
+            　　function loadpopup(){
+             
+            　　if (get_cookie('popped')==''){
+             
+            　　openwin()
+             
+            　　document.cookie="popped=yes"
+             
+            　　}
+             
+            　　}
+
+            var mask = document.getElementById('mask')
+                mask.onclick = function(){
+                    mask.style.display = 'none' 
+                }
+             
+            　　</script>
+    
+</body>
+</html>

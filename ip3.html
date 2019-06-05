@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ip3</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+
+        <div id="app_banner" class="kid_banner">
+                            <div class="kb_click">
+                                <img src="test.png">
+                            </div>
+                            <a id="kb_close" href="javascript:void(0);" onclick="banner_close()" class="close"></a>
+                 </div> 
+
+        <script>
+                     function cookiesave(n,v,time,dn,path)//设置
+                     {
+                        if(n){
+                            if(!time) time=24*60*0*1000;
+                             if(!path) path="/";
+                             var Days=1;//1天
+                             /*var Days=0.00006;//4s测试*/
+                             var exp=new Date();
+                            var today=new Date();
+                            exp.setTime(today.getTime()+Days*24*60*60*1000);
+                            var expires="; expires="+exp.toGMTString();
+                            if(dn) dn="domain="+dn+";";
+                            document.cookie = n + "=" + v + expires + "; " + dn + "path=" + path;
+                        }
+                    }
+                    function cookieget(n)//获取
+                    {
+                        var name = n + "=";
+                        var ol=document.cookie;
+                        /*alert(ol);*/
+                        var ca = document.cookie.split(';');
+                        /*alert(ca);*/
+                        for(var i=0;i<ca.length;i++) {
+                           var c = ca[i];
+                            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                            if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+                        }
+                        return "";
+                    }
+                
+                    function banner_close(){
+                        $("#app_banner").slideUp();
+                        cookiesave('banner_close','banner_close','','');
+                    }
+                
+                    function clickclose(){
+                        if(cookieget('banner_close')=='banner_close'){
+                            $("#app_banner").slideUp();
+                        }else{
+                            $("#app_banner").slideDown();
+                        }
+                    }
+                    window.onload=clickclose;
+                </script>
+    
+</body>
+</html>

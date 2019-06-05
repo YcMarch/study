@@ -24,10 +24,12 @@
             let phoneValue = $('#phone').val();
             console.log(phoneValue)
             $.ajax({
-                url:'http://www.kaoyan365.cn/index.php?m=formguide&c=forms&a=getInfo&phone='+phoneValue+'',
+                //url:'http://www.kaoyan365.cn/index.php?m=formguide&c=forms&a=getInfo&phone='+phoneValue+'',
+                url:'http://www.kaoyan365.cn/index.php?m=formguide&c=forms&a=getInfo&phone=13363638782',
                 method:'get',
                 dataType:'json',
                 success:function (data) {
+                    console.log(data)
                     if(window.localStorage){
                             localStorage.setItem('data',JSON.stringify(data));
                     }else {
