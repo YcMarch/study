@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>同一个页面多个表单提交</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+
+    <style>
+        .inputBox input{width: 100px;height: 25px;line-height: 25px;}
+        
+
+
+.card {
+  color: inherit;
+  cursor: pointer;
+  width: 300px;
+  min-width: 300px;
+  height: 400px;
+  min-height: 400px;
+  perspective: 1000px;
+  margin: 1rem;
+  position: relative;
+}
+.front,
+.back {
+  border-radius: 6px;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: ease-in-out 600ms;
+}
+.card:hover .front {
+  transform: rotateY(180deg);
+}
+.card:nth-child(even):hover .front {
+  transform: rotateY(-180deg);
+}
+.back {
+  transform: rotateY(-180deg);
+  opacity: 0;
+}
+.card:hover .back {
+  transform: rotateY(0deg);
+}
+.card:nth-child(even) .back {
+  transform: rotateY(180deg);
+  opacity: 1;
+}
+.card:nth-child(even):hover .back {
+  transform: rotateY(0deg);
+}     
+</style>
+
+<div class="card">
+        <div class="front" style="background: red">
+          <p>我是第一页</p>
+        </div>
+        <div class="back" style="background: blue">
+          <div>
+            <p>我是第二页</p>
+          </div>
+        </div>
+</div>
+
+
+    <div class="inputBox">
+            姓名<input class="name" type="text"><br>
+            电话<input class="telephone" type="text"><br>
+            专业 <input class="zy1" type="text" ><br>
+            省份<input class="province1" type="text"><br>
+            城市<input class="city1" type="text"><br>
+            院校<input class="academy1" type="text"><br>
+            <input class="fromer" type="hidden" value="测试2"><br>
+            <input type="button" class="btn" id="btn" value="按钮2">
+    </div>
+
+    <hr>
+
+    <div class="inputBox">
+            姓名<input class="name" type="text"><br>
+            电话<input class="telephone" type="text"><br>
+            专业 <input class="zy1" type="text" ><br>
+            省份<input class="province1" type="text"><br>
+            城市<input class="city1" type="text"><br>
+            院校<input class="academy1" type="text"><br>
+            <input class="fromer" type="hidden" value="测试"><br>
+            <input type="button" class="btn" id="btn2" value="按钮2">
+    </div>
+
+    <div class="mask" style="display: none">111</div>
+    <div class="mask2" style="display: none">222</div>
+
+    <script type="text/javascript">
+
+        function ajaxfun(parent,formid,jiegou){
+            var info = {};
+            info.zy1 = parent.getElementsByClassName('zy1')[0].value;
+            info.city1 = parent.getElementsByClassName('city1')[0].value;
+            info.academy1 = parent.getElementsByClassName('academy1')[0].value;
+            info.fromer = parent.getElementsByClassName('fromer')[0].value+window.location.pathname+window.location.search;
+            info.province1 = parent.getElementsByClassName('province1')[0].value;
+            info.name = parent.getElementsByClassName('name')[0].value;
+            info.telephone = parent.getElementsByClassName('telephone')[0].value;
+
+            if (info.name== ''){
+                alert('请填写姓名');
+                return false;
+            }
+
+            if (info.telephone== ''){
+                alert('请填写手机号');
+                return false;
+            }
+            var reg = /^0?1[3465789]\d{9}$/; //手机号正则
+            if(!reg.test(info.telephone)) { //验证手机号是否正确
+                alert('请填写正确的手机号！');
+                return false;
+            }
+
+            if (info.zy1== ''){
+                alert('请填写专业');
+                return false;
+            }
+            if (info.province1== ''){
+                alert('请填写省份');
+                return false;
+            }
+
+            if (info.city1== ''){
+                alert('请填写城市');
+                return false;
+            }
+            if (info.academy1== ''){
+                alert('请填写院校');
+                return false;
+            }
+
+            $.ajax({
+                url:`http://www.kaoyan365.cn/index.php?m=formguide&c=forms&a=show&formid=${formid}&action=jsonp&siteid=1`,
+                data:{info},
+                dataType:"jsonp",
+                type:"GET",
+                success:function(json){
+                    if(json.status==1){
+                        jiegou.style.display = 'block'
+                    }else if(json.status==-1){
+                        alert('请勿重复提交')
+                    }else{
+                        alert(json.msg);
+                    }
+                }
+            })
+        }
+
+        $('#btn').click(function(){
+            let fuji = this.parentNode
+            let mask = document.getElementsByClassName('mask')[0]
+            ajaxfun(fuji,65,mask)
+        
+        })
+        $('#btn2').click(function(){
+            let fuji = this.parentNode
+            let mask = document.getElementsByClassName('mask2')[0]
+            ajaxfun(fuji,65,mask)
+        
+        })
+
+    </script>
+
+    
+</body>
+</html>

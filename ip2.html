@@ -11,14 +11,17 @@
         <div id='mask' style="display: none">mask</div>
         <Script>
                 function setCookie(name, value, expire) {    
+                  console.log(expire.toGMTString())
                   window.document.cookie = name + "=" + escape(value) + ((expire == null) ? "" : ("; expires=" + expire.toGMTString())); 
                 }
                 function getCookie(Name) {    
                    var search = Name + "="; 
                    if (window.document.cookie.length > 0) { // if there are any cookies 
                      offset = window.document.cookie.indexOf(search); 
+                       console.log(offset)
                   if (offset != -1) { // if cookie exists 
                        offset += search.length;
+                       console.log(offset)
                 // set index of beginning of value 
                     end = window.document.cookie.indexOf(";", offset)     
                 // set index of end of cookie value
@@ -32,13 +35,16 @@
                 function register(name) {
                   var today = new Date();
                   var expires = new Date();
+                  console.log(expires)
                   console.log(expires.setTime(today.getTime()))
+                  console.log(expires.setTime(today.getTime() + 1000*60*60*24))
                   expires.setTime(today.getTime() + 1000*60*60*24);
                   setCookie("ItDoor", name, expires);
                 }
                   var exitURL="http://write.blog.csdn.net/postedit";
                 function openWin() {
                   var c = getCookie("ItDoor");
+                  console.log(c)
                   if (c != null) {
                     return;
                   }
