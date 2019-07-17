@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dataoke</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+
+    <button id='btn'>点击我试试</button>
+
+    <script>
+    
+    $('#btn').click(function(){
+
+        $.ajax({
+  					url:"http://api.dataoke.com/index.php?r=Port/index&type=total&appkey=16079f8b4f",
+  					type:"GET",
+                    dataType:"json",
+  					success:function(json){
+  						console.log(json)
+  					}
+  				})
+
+    })
+    
+    </script>
+    
+    
+</body>
+</html>

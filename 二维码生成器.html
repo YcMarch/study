@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>二维码生成</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+
+    二维码地址<input type="text" id="link">
+    中间logo<input type="text" id="logo">
+    尺寸<input type="text" id="width">
+
+    <input type="button" id="btn" value="生成二维码">
+
+
+    <script>
+
+
+            $('#btn').click(function(){
+
+                // let link = $('#link').val();
+                let link = '北京';
+                let logo = $('#logo').val();
+                let width = $('#width').val();
+
+                $.ajax({
+                        // url:"http://apis.juhe.cn/qrcode/api?callback=show&key=fc3c8888c5d5f8e9733f0025d8534341&text='+link+'&logo='+logo+'&w='+width+'&type=2",
+                        url:"http://apis.juhe.cn/simpleWeather/query?key=ab8f7da303dfb26a8c6a900982bcbfcc&city='+link+'",
+                        method:'get',
+                        dataType:'jsonp',
+                        jsonpCallback:'show',
+                        success:function (data) {
+                            if(window.localStorage){
+                                    localStorage.setItem('data',JSON.stringify(data));
+                            }else {
+                                console.log('不支持localStorage')
+                            }
+                            console.log(data)
+                        },
+                        error:function () {
+                            console.log('失败')
+                        }
+                    })
+
+
+            })
+
+
+            
+       </script>
+
+    
+</body>
+</html>

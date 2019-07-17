@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判断是否分享</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+    <script src="http://www.yc-wr.com/jquery.cookie.js"></script>
+    <script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js "></script>
+</head>
+<body>
+
+    <style>
+        .zhengque,.cuowu,.shareBox{display: none;}
+    </style>
+
+    <div class="wenti">
+        <p>中公考研是否上市</p>
+        <p class="zhengque">正确</p>
+        <p class="cuowu">正确答案：是</p>
+        <ul class="xxList">
+            <li data-isShangshi='1'>是</li>
+            <li data-isShangshi='2'>否</li>
+        </ul>
+    </div>
+    <ul class="shareBox">
+        <li class="shareB1 bds_tqq" data-cmd="tqq">朋友圈</li>
+        
+        <li>qq群</li>
+    </ul>
+    <script>
+
+        $('.xxList li').each(function(){
+            $(this).click(function(){
+                let isShangshi = $(this).attr('data-isShangshi')
+                let fenxianghou = $.cookie('fenxianghou'); 
+
+                if(fenxianghou){
+                    if(fenxianghou=='1'){
+                        if(isShangshi == 1){
+                            let cookieNum2 = $.cookie('cuowu2'); // 读取cookie
+                            if(cookieNum2=='1'){
+                                alert('您已经没有机会了')
+                                return;
+                            }
+                            $('.zhengque').show();
+                         }else if(isShangshi == 2){
+                            alert('您已经没有机会了')
+                            $('.cuowu').show();
+                            $.cookie('cuowu2', '1'); // 设置cookie
+                            return;
+                        }
+                    }
+                }
+                if(isShangshi == 1){
+                    let cookieNum = $.cookie('cuowu'); // 读取cookie
+                    if(cookieNum=='1'){
+                        alert('您已经没有机会了,分享朋友圈在获得一次机会')
+                        $('.shareBox').show();
+                        return;
+                    }
+                    $('.zhengque').show();
+                }else if(isShangshi == 2){
+                    let cookieNum = $.cookie('cuowu'); // 读取cookie
+                    console.log(cookieNum)
+                    if(cookieNum=='1'){
+                        alert('您已经没有机会了,分享朋友圈在获得一次机会')
+                        $('.shareBox').show();
+                    }else{
+                        $.cookie('cuowu', '1'); // 设置cookie
+                        $('.cuowu').show();
+                    }
+                }
+            })
+        })
+
+        $('.shareB1').click(function(){
+            wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
+                wx.updateAppMessageShareData({ 
+                    title: '', // 分享标题
+                    desc: '', // 分享描述
+                    link: 'http://www.yc-wr.com/isShangshi.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                    imgUrl: '', // 分享图标
+                    success: function () {
+                    // 设置成功
+                    alert('设置成功')
+                    }
+                })
+            });
+            setTimeout(function(){
+                $.cookie("cuowu", "", {expires: -1});// 清除cookie
+                $.cookie('fenxianghou', '1'); // 设置cookie
+                $('.zhengque').hide();
+                $('.cuowu').hide();
+                $('.shareBox').hide();
+            },3000)
+        })
+
+    </script>
+    
+    
+</body>
+</html>
