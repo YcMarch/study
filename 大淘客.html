@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大淘客</title>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+
+        <script type="text/javascript">
+
+                            $.ajax({
+                              url:"http://api.dataoke.com/index.php?r=Port/index&type=top100&appkey=16079f8b4f&v=2",
+                              dataType:"jsonp",
+                              type:"GET",
+                              success:function(json){
+                                  
+                                  console.log(json)
+                                  
+                              }
+                          })
+        
+        
+        
+          </script>
+
+    
+</body>
+</html>
